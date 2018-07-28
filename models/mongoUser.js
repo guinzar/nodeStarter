@@ -7,5 +7,20 @@ const userSchema = new Schema({
     required: true
   }
 });
-const ModelClass = mongoose.model('user', userSchema);
-module.exports = ModelClass;
+const User = mongoose.model('user', userSchema);
+
+exports.getUsersCB = (cb) => {
+  User.find({}, (err, result) => {
+    if (err) throw err;
+    cb(result);
+  });
+};
+exports.postUserCB = (name, cb) => {
+  const user = new User({
+    name: name
+  });
+  user.save((err, user) => {
+    if (err) throw err;
+    cb(user);
+  });
+}

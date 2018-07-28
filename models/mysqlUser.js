@@ -6,3 +6,9 @@ exports.getUsersCB = (cb) => {
     cb(result);
   });
 };
+exports.postUserCB = (name, cb) => {
+  mysql.query(`insert into users (name) values ("${name}")`, (err, result) => {
+    if (err) throw err;
+    cb(result);
+  });
+};
