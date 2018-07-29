@@ -15,6 +15,8 @@ exports.getUsersCB = (cb) => {
     cb(result);
   });
 };
+exports.getUsersPromise = () => User.find({});
+
 exports.postUserCB = (name, cb) => {
   const user = new User({
     name: name
@@ -23,4 +25,10 @@ exports.postUserCB = (name, cb) => {
     if (err) throw err;
     cb(user);
   });
-}
+};
+exports.postUserPromise = (name) => {
+  const user = new User({
+    name: name
+  });
+  return user.save();
+};

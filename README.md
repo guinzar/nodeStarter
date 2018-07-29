@@ -1,6 +1,6 @@
 # nodeStarter
 
-Simple node/express starter boilerplate with testing and both mongo/mysql integration
+Simple node/express starter boilerplate with REST API, testing, mongo/mysql integration, and external API calls
 
 ## Built With
 
