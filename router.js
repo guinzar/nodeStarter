@@ -1,5 +1,6 @@
 const mongo = require('./controllers/mongoData');
 const mysql = require('./controllers/mysqlData');
+const api = require('./controllers/externalApi');
 
 module.exports = app => {
   app.get('/mongo/cb/users', mongo.getUsersCB);
@@ -10,4 +11,6 @@ module.exports = app => {
   app.post('/mongo/async/users', mongo.postUserAsync);
   app.get('/mysql/users/cb', mysql.getUsersCB);
   app.post('/mysql/users', mysql.postUserCB);
+
+  app.get('/api', api);
 };
