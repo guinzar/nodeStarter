@@ -4,7 +4,7 @@
   "description": "Simple node/express starter boilerplate with REST API, testing, mongo/mysql integration, and external API calls",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest --watch"
   },
   "author": "",
   "license": "ISC",
@@ -15,5 +15,8 @@
     "mongoose": "^5.2.5",
     "morgan": "^1.9.0",
     "mysql": "^2.16.0"
+  },
+  "devDependencies": {
+    "supertest": "^3.1.0"
   }
 }

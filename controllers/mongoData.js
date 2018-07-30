@@ -13,8 +13,17 @@ exports.getUsersPromise = (req, res) => {
     })
     .catch(err => {
       console.log(err);
-      res.status(404).send(err);
+      res.status(500).send(err);
     });
+};
+exports.getUsersAsync = async (req, res) => {
+  try {
+    const result = await mongo.getUsersPromise();
+    res.json(result);
+  } catch(err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
 };
 exports.postUserCB = (req, res) => {
   const name = req.body.name;
@@ -36,8 +45,22 @@ exports.postUserPromise = (req, res) => {
       })
       .catch(err => {
         console.log(err);
-        res.status(404).send(err);
+        res.status(500).send(err);
       });
+  } else {
+    res.status(400).send('invalid or no user name');
+  }
+};
+exports.postUserAsync = async (req, res) => {
+  const name = req.body.name;
+  if (name && typeof name === 'string') {
+    try {
+      const user = await mongo.postUserPromise(name);
+      res.send(`succesfully added ${name}`);
+    } catch(err) {
+      console.log(err);
+      res.status(500).send(err);
+    }
   } else {
     res.status(400).send('invalid or no user name');
   }
